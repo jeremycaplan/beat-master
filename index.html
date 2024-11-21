@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeatMaster - Musical Tempo Training Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>BeatMaster</h1>
+        <p class="tagline">Train your internal metronome with precision</p>
+
+        <div id="start-screen" class="screen">
+            <div class="importance-note">
+                <h3>Why Tempo Recognition Matters</h3>
+                <p>Understanding tempo is crucial for musicians. It helps you:</p>
+                <ul>
+                    <li>Interpret composers' intentions accurately</li>
+                    <li>Maintain consistent timing in performances</li>
+                    <li>Communicate effectively with other musicians</li>
+                    <li>Develop a stronger internal sense of rhythm</li>
+                </ul>
+            </div>
+
+            <div class="game-options">
+                <div class="mode-selection">
+                    <h3>Select Your Mode</h3>
+                    <div class="mode-buttons">
+                        <button class="mode-btn active" data-mode="student">Music Student</button>
+                        <button class="mode-btn" data-mode="professional">Professional</button>
+                    </div>
+                    <div class="mode-description">
+                        <div id="student-desc" class="mode-desc active">
+                            <p>BPM Range: 60-160</p>
+                            <p>Perfect for students developing their tempo recognition skills.</p>
+                        </div>
+                        <div id="professional-desc" class="mode-desc">
+                            <p>BPM Range: 40-208</p>
+                            <p>Challenging range for experienced musicians.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pitch-selection">
+                    <h3>Select Beat Pitch</h3>
+                    <div class="pitch-options">
+                        <button class="pitch-btn" data-pitch="high">High (880Hz)</button>
+                        <button class="pitch-btn active" data-pitch="medium">Medium (440Hz)</button>
+                        <button class="pitch-btn" data-pitch="low">Low (220Hz)</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="high-scores">
+                <h3>High Scores</h3>
+                <div class="score-tabs">
+                    <button class="score-tab active" data-tab="student">Student Mode</button>
+                    <button class="score-tab" data-tab="professional">Professional Mode</button>
+                </div>
+                <div id="student-scores" class="score-list"></div>
+                <div id="professional-scores" class="score-list hidden"></div>
+            </div>
+
+            <button id="start-btn" class="primary-btn">Start Game</button>
+        </div>
+
+        <div id="game-screen" class="screen hidden">
+            <div id="beat-animation" class="beat-circle"></div>
+            <div id="status-text">Round 1 of 5</div>
+            
+            <div id="input-section" class="hidden">
+                <input type="number" id="bpm-input" placeholder="Enter BPM (30-208)" min="30" max="208">
+                <button id="submit-btn" class="primary-btn">Submit Guess</button>
+            </div>
+            
+            <div id="feedback-section" class="hidden">
+                <div id="feedback-text" class="feedback-content"></div>
+                <button id="next-btn" class="primary-btn">Next Round</button>
+            </div>
+        </div>
+
+        <div id="result-screen" class="screen hidden">
+            <h2>Game Complete!</h2>
+            <div class="final-score">
+                <h3>Total Score: <span id="total-score">0</span></h3>
+                <div id="score-breakdown"></div>
+            </div>
+
+            <div class="analysis">
+                <h3>Performance Analysis</h3>
+                <p id="tempo-tendency"></p>
+                <p id="accuracy-stats"></p>
+            </div>
+
+            <div class="high-score-notification hidden">
+                <h3>🏆 New High Score! 🏆</h3>
+                <div class="high-score-form">
+                    <label for="player-name">Enter your name:</label>
+                    <input type="text" id="player-name" placeholder="Your Name" maxlength="20">
+                    <button id="save-score-btn" class="primary-btn">Save Score</button>
+                </div>
+            </div>
+
+            <div class="result-buttons">
+                <button id="play-again-btn" class="primary-btn">Play Again</button>
+                <button onclick="window.location.reload()" class="secondary-btn">Change Mode</button>
+            </div>
+        </div>
+    </div>
+    <script src="game.js"></script>
+</body>
+</html>

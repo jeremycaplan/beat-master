@@ -1,0 +1,463 @@
+:root {
+    --primary-color: #4a90e2;
+    --secondary-color: #2c3e50;
+    --accent-color: #e74c3c;
+    --background-color: #f5f6fa;
+    --text-color: #2c3e50;
+    --success-color: #2ecc71;
+    --error-color: #e74c3c;
+    --student-color: #3498db;
+    --professional-color: #e67e22;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.screen {
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.hidden {
+    display: none !important;
+}
+
+h1 {
+    color: var(--primary-color);
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+
+.instructions {
+    text-align: left;
+    margin: 2rem 0;
+    padding: 1rem;
+    background: var(--background-color);
+    border-radius: 0.5rem;
+}
+
+.instructions ul {
+    list-style-position: inside;
+    margin-left: 1rem;
+}
+
+.primary-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 0.5rem;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.primary-btn:hover {
+    background-color: #357abd;
+    transform: translateY(-2px);
+}
+
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.beat-circle {
+    width: 100px;
+    height: 100px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    margin: 2rem auto;
+    transition: transform 0.1s ease-in-out;
+}
+
+.beat-circle.active {
+    transform: scale(1.2);
+    background-color: var(--accent-color);
+}
+
+#status-text {
+    font-size: 1.2rem;
+    margin: 1rem 0;
+    min-height: 2rem;
+}
+
+#input-section {
+    margin: 2rem 0;
+}
+
+#bpm-input {
+    padding: 0.8rem;
+    font-size: 1.2rem;
+    border: 2px solid var(--primary-color);
+    border-radius: 0.5rem;
+    width: 150px;
+    margin-right: 1rem;
+}
+
+.importance-note {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    margin: 1.5rem 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.importance-note h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.importance-note ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.importance-note li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.8rem;
+    line-height: 1.4;
+}
+
+.importance-note li:before {
+    content: "•";
+    color: var(--primary-color);
+    font-size: 1.2em;
+    position: absolute;
+    left: 0.2rem;
+    top: -0.1rem;
+}
+
+.score-text {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin: 1rem 0;
+    text-align: center;
+}
+
+.feedback-content {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.feedback-content h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.feedback-content p {
+    margin: 0.5rem 0;
+    text-align: center;
+}
+
+.score-total {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 2px solid #eee;
+}
+
+#score-breakdown {
+    margin: 1rem 0;
+}
+
+.final-score {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin: 1rem 0;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.beat-circle.pulse {
+    animation: pulse 0.2s ease-in-out;
+}
+
+.tagline {
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+    margin-bottom: 2rem;
+}
+
+.game-options {
+    display: grid;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.mode-selection, .pitch-selection {
+    background: var(--background-color);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+}
+
+.mode-btn, .pitch-btn {
+    background: white;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 0.8rem 1.5rem;
+    margin: 0.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.mode-btn:hover, .pitch-btn:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+.mode-btn.active {
+    background: var(--primary-color);
+    color: white;
+}
+
+.mode-btn[data-mode="student"].active {
+    background: var(--student-color);
+    border-color: var(--student-color);
+}
+
+.mode-btn[data-mode="professional"].active {
+    background: var(--professional-color);
+    border-color: var(--professional-color);
+}
+
+.mode-description {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+.mode-desc {
+    display: none;
+    padding: 0.5rem;
+    background: white;
+    border-radius: 0.3rem;
+    margin: 0.5rem 0;
+}
+
+.mode-desc.active {
+    display: block;
+}
+
+.pitch-options {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.pitch-btn.active {
+    background: var(--primary-color);
+    color: white;
+}
+
+.high-scores {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    margin: 2rem 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.score-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.score-tab {
+    background: none;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+}
+
+.score-tab.active {
+    border-bottom-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.score-list {
+    max-height: 200px;
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+.score-entry {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+.mode-indicator {
+    padding: 0.3rem 0.8rem;
+    border-radius: 1rem;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.mode-indicator.student {
+    background: var(--student-color);
+    color: white;
+}
+
+.mode-indicator.professional {
+    background: var(--professional-color);
+    color: white;
+}
+
+.analysis {
+    background: var(--background-color);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    margin: 1.5rem 0;
+}
+
+.analysis h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.high-score-notification {
+    background: linear-gradient(135deg, var(--success-color), #27ae60);
+    color: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin: 2rem 0;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: slideIn 0.5s ease-out;
+}
+
+.high-score-notification h3 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.high-score-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.high-score-form label {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+#player-name {
+    padding: 0.8rem 1.2rem;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 0.5rem;
+    background: rgba(255, 255, 255, 0.9);
+    font-size: 1.1rem;
+    width: 100%;
+    max-width: 300px;
+    transition: all 0.3s ease;
+}
+
+#player-name:focus {
+    outline: none;
+    border-color: white;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+}
+
+#save-score-btn {
+    background: white;
+    color: var(--success-color);
+    border: none;
+    padding: 0.8rem 2rem;
+    font-size: 1.1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 0.5rem;
+}
+
+#save-score-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.result-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.secondary-btn {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 0.5rem;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.secondary-btn:hover {
+    background-color: #34495e;
+    transform: translateY(-2px);
+}
