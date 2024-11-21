@@ -1,5 +1,7 @@
 # BeatMaster - Rhythm Training Game 🎵
 
+**[👉 Play BeatMaster Now!](https://jeremycaplan.github.io/beat-master/)**
+
 BeatMaster is an interactive web-based game designed to help musicians and music enthusiasts develop their tempo recognition skills. Players listen to a sequence of beats and try to guess the exact BPM (beats per minute).
 
 ## Features 🎮
